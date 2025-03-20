@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 02 - INOVA</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main>
+        <section class="elementos-formulario">
+            <header>
+                <a class="btn-voltar" href=""><img src="assets/svg/arrow-left-02.svg">Voltar</a>
+                <h1 class="titulo-principal">Formulário de inscrição</h1>
+                <p class="subtitulo-principal">Preencha os dados abaixo para fazer sua inscrição no Programa Trilhas</p>
+            </header>
+            <form id="formulario-inscricao" novalidate onsubmit="validarFormulario(event)">
+                <fieldset class="formulario">
+                    <h2 class="titulo-secundario">Informações do participante</h2>
+                    <div class="formulario__item">
+                        <label for="nome-completo">Nome completo</label><br>
+                        <input class="campo-padrao" type="text" id="nome-completo" onblur="validarNome()" required>
+                        <span class="alerta alerta--escondido"></span>
+                    </div>
+
+                    <div class="formulario__item">
+                        <label for="data-nascimento">Data de nascimento</label><br>
+                        <input class="campo-padrao" type="date" id="data-nascimento" onblur="validarDataNascimento()" required>
+                        <span class="alerta alerta--escondido"></span>
+                    </div>
+
+                    <div class="formulario__item">
+                        <label for="cpf">CPF</label><br>
+                        <input class="campo-padrao" type="text" id="cpf" autocomplete="off" placeholder="123.456.789-00" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onblur="validarCpf()" required>
+                        <span class="alerta alerta--escondido"></span>
+                    </div>
+
+                    <div class="formulario__item">
+                        <label for="sexo">Sexo</label><br>
+                        <select class="campo-padrao campo-select" id="sexo">
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                            <option value="n-a">Não informar</option>
+                        </select>
+                    </div>
+
+                    <div class="formulario__item">
+                        <label for="email">E-mail</label><br>
+                        <input class="campo-padrao" type="email" id="email" onblur="validarEmail()" required>
+                        <span class="alerta alerta--escondido"></span>
+                    </div>
+
+                    <div class="formulario__item">
+                        <label for="telefone">Telefone</label><br>
+                        <input class="campo-padrao" type="tel" id="telefone" placeholder="(98) 9 0000-0000" pattern="\(\d{2}\) (\d )?\d{4}-\d{4}" onblur="validarTelefone()" required>
+                        <span class="alerta alerta--escondido"></span>
+                    </div>
+
+                    <div class="formulario__item">
+                        <label for="identidade">Documento de identidade</label><br>
+                        <input class="campo-arquivo" type="file" accept=".pdf" id="identidade" oninput="validarArquivo(this);atualizarArquivo(this)" required>
+                        <label class="cabecalho-campo-arquivo" for="identidade">
+                            <span class="campo-arquivo__selecionado campo-arquivo__selecionado--escondido"></span>
+                            <img class="icone-nuvem" src="assets/svg/cloud-upload.svg" alt="Ícone de nuvem"> 
+                            Clique aqui para<br>selecionar o arquivo
+                        </label>
+                    <span class="alerta alerta--escondido"></span>
+                    </div>
+                </fieldset>
+
+
+                <fieldset class="formulario">
+                    <h2 class="titulo-secundario">Endereço residencial</h2>
+                    <div class="formulario__item">
+                        <label for="cep">CEP</label><br>
+                        <input class="campo-padrao" type="text" id="cep" placeholder="12345-000" pattern="\d{5}-\d{3}" onblur="validarCep();preencherCamposCep()" required>
+                        <span class="alerta alerta--escondido"></span>
+                    </div>
+
+                    <div class="grupo-endereco">
+                        <div class="grupo-endereco__esquerda">
+                            <div class="formulario__item">
+                                <label for="rua">Rua</label><br>
+                                <input class="campo-padrao" type="text" id="rua" readonly required>
+                                <span class="alerta alerta--escondido"></span>
+                            </div>
+
+                            <div class="formulario__item">
+                                <label for="cidade">Cidade</label><br>
+                                <input class="campo-padrao" type="text" id="cidade" readonly required>
+                                <span class="alerta alerta--escondido"></span>
+                            </div>
+                        </div>
+                        <div class="grupo-endereco__direita">
+                            <div class="formulario__item">
+                                <label for="n-casa">Número</label><br>
+                                <input class="campo-padrao" type="text" id="n-casa" pattern="\d+" onblur="validarNumeroCasa()" required>
+                                <span class="alerta alerta--escondido"></span>
+                            </div>
+
+                            <div class="formulario__item">
+                                <label for="estado">Estado</label><br>
+                                <input class="campo-padrao" type="text" id="estado" readonly required>
+                                <span class="alerta alerta--escondido"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="formulario__item">
+                        <label for="residencia">Comprovante de residência</label><br>
+                        <input class="campo-arquivo" type="file" id="residencia" oninput="validarArquivo(this);atualizarArquivo(this)" required>
+                        <label class="cabecalho-campo-arquivo" for="residencia">
+                            <span class="campo-arquivo__selecionado campo-arquivo__selecionado--escondido"></span>
+                            <img class="icone-nuvem" src="assets/svg/cloud-upload.svg" alt="Ícone de nuvem">
+                            Clique aqui para<br>selecionar o arquivo
+                        </label>
+                    <span class="alerta alerta--escondido"></span>
+                    </div>
+                </fieldset>
+
+                <fieldset class="formulario">
+                    <h2 class="titulo-secundario">Trilha de aprendizagem</h2>
+                    <label>Selecione apenas uma trilha</label>
+                    <div class="formulario__item formulario__radio">
+                        <input class="campo-radio" type="radio" id="radio-front" name="trilha-de-aprendizagem" value="front" required>
+                        <label for="radio-front" class="cabecalho-campo-radio"><img class="icone-trilhas" src="assets/svg/front-end.svg" alt="Ícone Front-end">Programação Front-end</label>
+
+                        <input class="campo-radio" type="radio" id="radio-back" name="trilha-de-aprendizagem" value="back">
+                        <label for="radio-back" class="cabecalho-campo-radio"><img class="icone-trilhas" src="assets/svg/back-end.svg" alt="Ícone Back-end">Programação Back-end</label>
+
+                        <input class="campo-radio" type="radio" id="radio-jogos" name="trilha-de-aprendizagem" value="jogos">
+                        <label for="radio-jogos" class="cabecalho-campo-radio"><img class="icone-trilhas" src="assets/svg/jogos.svg" alt="Ícone |Jogos">Programação de Jogos</label>
+
+                        <input class="campo-radio" type="radio" id="radio-ux" name="trilha-de-aprendizagem" value="ux">
+                        <label for="radio-ux" class="cabecalho-campo-radio"><img class="icone-trilhas" src="assets/svg/ux.svg" alt="Ícone UX">Desing e Experiência</label>
+
+                        <input class="campo-radio" type="radio" id="radio-dados" name="trilha-de-aprendizagem" value="dados">
+                        <label for="radio-dados" class="cabecalho-campo-radio"><img class="icone-trilhas" src="assets/svg/dados.svg" alt="Ícone Dados">Ciência de Dados</label>
+                    </div>
+                    <span class="alerta alerta--escondido"></span>
+                </fieldset>
+
+                <fieldset class="formulario">
+                    <div class="formulario__item formulario__check">
+                        <input class="campo-check" type="checkbox" id="confirmacao-termos" value="termos-confirmados">
+                        <label class="cabecalho-campo-check" for="confirmacao-termos">
+                            Declaro que li e concordo com os <strong class="texto-destaque">Termos e Condições</strong> e com a <strong class="texto-destaque">Política de Privacidade</strong>.
+                        </label>
+                        <span class="alerta alerta--escondido"></span>
+                    </div>
+                </fieldset>
+
+                <div class="btn-inferior">
+                    <button class="btn-cancelar" type="button">Cancelar</button>
+                    <button class="btn-inscricao" type="submit">Fazer inscrição</button>
+                </div>
+            </form>
+        </section>
+
+        <div class="imagens">
+            <img class="imagem-jovem" src="assets/imagens/imagem.png" alt="Ilustração de jovem estudando"><br>
+            <img class="imagem-logo" src="assets/imagens/logo.png" alt="Logo Trilhas Inova">
+        </div>
+    </main>
+    <script type="text/javascript" src="https://unpkg.com/imask"></script>
+    <script type="text/javascript" src="./main.js"></script>
+</body>
+</html>
