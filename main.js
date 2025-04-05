@@ -28,21 +28,20 @@ let telefoneMask = IMask(telefone, {
 let cepMask = IMask(cep, {mask: "00000-000"});
 let numeroCasaMask = IMask(numeroCasa, {mask: Number, scale: 0})
 
-
+function obterAlertaSpan(input) {
+    return input.parentElement.querySelector(".alerta") ?? input.parentElement.parentElement.querySelector(".alerta");
+}
 function exibirErro(input, mensagem) {
-    //input.setCustomValidity(mensagem);
-
-    let alerta = input.parentElement.querySelector(".alerta") ?? input.parentElement.parentElement.querySelector(".alerta");
+    const alerta = obterAlertaSpan(input);
     alerta.textContent = mensagem;
 
     input.classList.add("campo-padrao--invalido");
     alerta.classList.remove("alerta--escondido");
 }
 function recolherErro(input) {
-    //input.setCustomValidity("");
-
-    let alerta = input.parentElement.querySelector(".alerta") ?? input.parentElement.parentElement.querySelector(".alerta");
-
+    const alerta = obterAlertaSpan(input);
+    alerta.textContent = "";
+    
     input.classList.remove("campo-padrao--invalido");
     alerta.classList.add("alerta--escondido");
 }
