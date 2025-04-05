@@ -46,28 +46,19 @@ function recolherErro(input) {
     input.classList.remove("campo-padrao--invalido");
     alerta.classList.add("alerta--escondido");
 }
-function cpfValido(cpfDigitos) {
-    let digitosNumericos = cpfDigitos.split("")
-        .map(d => parseInt(d));
-    let aux, soma, resto;
+function cpfValido(cpfDigitosString) {
+    if (!cpfDigitosString.match(/\d{11}/)) return false;
 
-    aux = 10;
-    soma = digitosNumericos.slice(0, 9)
-        .reduce((soma, d) => soma + d * aux--, 0);
-    resto = soma % 11;
-    let dv1 = resto < 2 ? 0 : 11 - resto;
-
-    console.log(dv1)
-    if (dv1 != digitosNumericos[9]) return false;
-
-    aux = 11;
-    soma = digitosNumericos.slice(0, 10)
-        .reduce((soma, d) => soma + d * aux--, 0);
-    resto = soma % 11;
-    let dv2 = resto < 2 ? 0 : 11 - resto;
-
-    console.log(dv2)
-    return dv2 == digitosNumericos[10];  
+    const digitos = cpfDigitosString.split("").map(d => parseInt(d));
+    function dv(posicao, digitosNumericos) {
+        let aux = posicao + 1;
+        const soma = digitosNumericos.slice(0, posicao)
+            .reduce((soma, d) => soma + d * aux--, 0);
+        const resto = soma % 11;
+        return resto < 2 ? 0 : 11 - resto;
+    }
+  
+    return dv(9, digitos) === digitos[9] && dv(10, digitos) === digitos[10];
 }
 async function buscarDadosCep(cep) {
     let res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
