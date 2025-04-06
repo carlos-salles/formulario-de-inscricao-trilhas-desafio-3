@@ -14,30 +14,30 @@
                 <h1 class="titulo-principal">Formulário de inscrição</h1>
                 <p class="subtitulo-principal">Preencha os dados abaixo para fazer sua inscrição no Programa Trilhas</p>
             </header>
-            <form id="formulario-inscricao" novalidate onsubmit="validarFormulario(event)">
+            <form id="formulario-inscricao" method="post" onsubmit="validarFormulario(event)">
                 <fieldset class="formulario">
                     <h2 class="titulo-secundario">Informações do participante</h2>
                     <div class="formulario__item">
                         <label for="nome-completo">Nome completo</label><br>
-                        <input class="campo-padrao" type="text" id="nome-completo" onblur="validarNome()" required>
+                        <input class="campo-padrao" type="text" id="nome-completo" name="nome-completo" onblur="validarNome()" required>
                         <span class="alerta alerta--escondido"></span>
                     </div>
 
                     <div class="formulario__item">
                         <label for="data-nascimento">Data de nascimento</label><br>
-                        <input class="campo-padrao" type="date" id="data-nascimento" onblur="validarDataNascimento()" required>
+                        <input class="campo-padrao" type="date" id="data-nascimento" name="data-nascimento" onblur="validarDataNascimento()" required>
                         <span class="alerta alerta--escondido"></span>
                     </div>
 
                     <div class="formulario__item">
                         <label for="cpf">CPF</label><br>
-                        <input class="campo-padrao" type="text" id="cpf" autocomplete="off" placeholder="123.456.789-00" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onblur="validarCpf()" required>
+                        <input class="campo-padrao" type="text" id="cpf" name="cpf" placeholder="123.456.789-00" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onblur="validarCpf()" required>
                         <span class="alerta alerta--escondido"></span>
                     </div>
 
                     <div class="formulario__item">
                         <label for="sexo">Sexo</label><br>
-                        <select class="campo-padrao campo-select" id="sexo">
+                        <select class="campo-padrao campo-select" id="sexo" name="sexo">
                             <option value="masculino">Masculino</option>
                             <option value="feminino">Feminino</option>
                             <option value="n-a">Não informar</option>
@@ -46,19 +46,19 @@
 
                     <div class="formulario__item">
                         <label for="email">E-mail</label><br>
-                        <input class="campo-padrao" type="email" id="email" onblur="validarEmail()" required>
+                        <input class="campo-padrao" type="email" id="email" name="email" onblur="validarEmail()" required>
                         <span class="alerta alerta--escondido"></span>
                     </div>
 
                     <div class="formulario__item">
                         <label for="telefone">Telefone</label><br>
-                        <input class="campo-padrao" type="tel" id="telefone" placeholder="(98) 9 0000-0000" pattern="\(\d{2}\) (\d )?\d{4}-\d{4}" onblur="validarTelefone()" required>
+                        <input class="campo-padrao" type="tel" id="telefone" name="telefone" placeholder="(98) 9 0000-0000" pattern="\(\d{2}\) (\d )?\d{4}-\d{4}" onblur="validarTelefone()" required>
                         <span class="alerta alerta--escondido"></span>
                     </div>
 
                     <div class="formulario__item">
                         <label for="identidade">Documento de identidade</label><br>
-                        <input class="campo-arquivo" type="file" accept=".pdf" id="identidade" oninput="validarArquivo(this);atualizarArquivo(this)" required>
+                        <input class="campo-arquivo" type="file" accept=".pdf" id="identidade" name="identidade" oninput="validarArquivo(this);atualizarArquivo(this)" required>
                         <label class="cabecalho-campo-arquivo" for="identidade">
                             <span class="campo-arquivo__selecionado campo-arquivo__selecionado--escondido"></span>
                             <img class="icone-nuvem" src="assets/svg/cloud-upload.svg" alt="Ícone de nuvem"> 
@@ -73,7 +73,7 @@
                     <h2 class="titulo-secundario">Endereço residencial</h2>
                     <div class="formulario__item">
                         <label for="cep">CEP</label><br>
-                        <input class="campo-padrao" type="text" id="cep" placeholder="12345-000" pattern="\d{5}-\d{3}" onblur="validarCep();preencherCamposCep()" required>
+                        <input class="campo-padrao" type="text" id="cep" name="cep" placeholder="12345-000" pattern="\d{5}-\d{3}" onblur="validarCep();preencherCamposCep()" required>
                         <span class="alerta alerta--escondido"></span>
                     </div>
 
@@ -81,33 +81,33 @@
                         <div class="grupo-endereco__esquerda">
                             <div class="formulario__item">
                                 <label for="rua">Rua</label><br>
-                                <input class="campo-padrao" type="text" id="rua" readonly required>
+                                <input class="campo-padrao" type="text" id="rua" name="rua" readonly required>
                                 <span class="alerta alerta--escondido"></span>
                             </div>
 
                             <div class="formulario__item">
                                 <label for="cidade">Cidade</label><br>
-                                <input class="campo-padrao" type="text" id="cidade" readonly required>
+                                <input class="campo-padrao" type="text" id="cidade" name="cidade" readonly required>
                                 <span class="alerta alerta--escondido"></span>
                             </div>
                         </div>
                         <div class="grupo-endereco__direita">
                             <div class="formulario__item">
                                 <label for="n-casa">Número</label><br>
-                                <input class="campo-padrao" type="text" id="n-casa" pattern="\d+" onblur="validarNumeroCasa()" required>
+                                <input class="campo-padrao" type="text" id="n-casa" name="n-casa" pattern="\d+" onblur="validarNumeroCasa()" required>
                                 <span class="alerta alerta--escondido"></span>
                             </div>
 
                             <div class="formulario__item">
                                 <label for="estado">Estado</label><br>
-                                <input class="campo-padrao" type="text" id="estado" readonly required>
+                                <input class="campo-padrao" type="text" id="estado" name="estado" readonly required>
                                 <span class="alerta alerta--escondido"></span>
                             </div>
                         </div>
                     </div>
                     <div class="formulario__item">
                         <label for="residencia">Comprovante de residência</label><br>
-                        <input class="campo-arquivo" type="file" id="residencia" oninput="validarArquivo(this);atualizarArquivo(this)" required>
+                        <input class="campo-arquivo" type="file" id="residencia" name="residencia" oninput="validarArquivo(this);atualizarArquivo(this)" required>
                         <label class="cabecalho-campo-arquivo" for="residencia">
                             <span class="campo-arquivo__selecionado campo-arquivo__selecionado--escondido"></span>
                             <img class="icone-nuvem" src="assets/svg/cloud-upload.svg" alt="Ícone de nuvem">
@@ -141,7 +141,7 @@
 
                 <fieldset class="formulario">
                     <div class="formulario__item formulario__check">
-                        <input class="campo-check" type="checkbox" id="confirmacao-termos" value="termos-confirmados">
+                        <input class="campo-check" type="checkbox" id="confirmacao-termos" name="confirmacao-termos" value="termos-confirmados">
                         <label class="cabecalho-campo-check" for="confirmacao-termos">
                             Declaro que li e concordo com os <strong class="texto-destaque">Termos e Condições</strong> e com a <strong class="texto-destaque">Política de Privacidade</strong>.
                         </label>
