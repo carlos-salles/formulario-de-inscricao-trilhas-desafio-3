@@ -6,7 +6,7 @@
     <title>Desafio 02 - INOVA</title>
     <link rel="stylesheet" href="./style.css">
 </head>
-<body>
+<body onload="carregarRascunho()">
     <main>
         <section class="elementos-formulario">
             <header>
@@ -151,6 +151,7 @@
 
                 <div class="btn-container">
                     <button class="btn-inferior btn-secundario" type="button">Cancelar</button>
+                    <button class="btn-inferior btn-secundario" type="button" onclick="salvarRascunho()">Salvar rascunho</button>
                     <button class="btn-inferior btn-primario" type="submit">Fazer inscrição</button>
                 </div>
             </form>

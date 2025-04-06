@@ -41,7 +41,7 @@ function exibirErro(input, mensagem) {
 function recolherErro(input) {
     const alerta = obterAlertaSpan(input);
     alerta.textContent = "";
-    
+
     input.classList.remove("campo-padrao--invalido");
     alerta.classList.add("alerta--escondido");
 }
@@ -207,6 +207,62 @@ function preencherCamposCep() {
         });
     }
     
+}
+
+const formStorageItem = "formulario-inscricao-rascunho";
+const formStorage = {
+    load(item) {
+        let dados = localStorage.getItem(item);
+        if (dados === null) return;
+        
+        dados = JSON.parse(dados);
+        for (const name in dados) {
+            const {type, value} = dados[name];
+            const elements = Array.from(document.getElementsByName(name));
+
+            if (type == "checkbox") {
+                elements.forEach(el => {el.checked = value});
+            }
+            else if (type == "radio") {
+                elements.forEach(el => {el.checked = (el.value == value)})
+            }
+            else {
+                elements.forEach(el => el.value = value);
+            }
+        }
+    },
+    save(item, elements) {
+        const dados = {};
+        for (const el of elements) {
+            let type, value;
+            if (el?.type == "checkbox") {
+                type = "checkbox";
+                value = el.checked;
+            }
+            else if (el?.type == "radio") {
+                const inputChecked = document.querySelector(`[name="${el.name}"]:checked`);
+                type = "radio";
+                value = inputChecked ? inputChecked.value : "";
+            }
+            else {
+                type = "default",
+                value = el.value;
+            }
+            dados[el.name] = {type, value};
+        }
+        
+        localStorage.setItem(item, JSON.stringify(dados));
+    }
+}
+
+
+function carregarRascunho() {
+    formStorage.load(formStorageItem);
+}
+
+function salvarRascunho() {
+    const campos = document.querySelectorAll('.campo-check, .campo-radio, .campo-padrao, .campo-arquivo');
+    formStorage.save(formStorageItem, campos);
 }
 
 function validarFormulario(event) {
