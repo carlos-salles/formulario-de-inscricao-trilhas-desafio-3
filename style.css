@@ -375,34 +375,30 @@ label:has(~.campo-padrao--loading)::after {
     
 }
 
-.btn-inferior {
+.btn-container {
     display: flex;
     width: 100%;
     height: 64px;
+    align-items: stretch;
     justify-content: flex-end;
     align-items: flex-end;
     gap: 16px;
 }
-.btn-inscricao {
-    width: 169px;
-    height: 48px;
-    background-color: var(--cor-texto-highlight);
+.btn-inferior {
+    padding: 12px 24px;
     border-radius: 8px;
-    color: var(--cor-superficie-1);
     font-family: var(--fnt-1);
     font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
+    cursor: pointer
 }
-.btn-cancelar {
-    width: 123px;
-    height: 48px;
+.btn-primario {
+    background-color: var(--cor-texto-highlight);
+    color: var(--cor-superficie-1);
+    font-weight: 500;
+}
+.btn-secundario {
     background-color: var(--cor-superficie-1);
     border: 1px solid var(--cor-texto-highlight);
-    border-radius: 8px;
     color: var(--cor-texto-highlight);
-    font-family: var(--fnt-1);
-    font-size: 16px;
     font-weight: 500;
-    cursor: pointer;
 }
