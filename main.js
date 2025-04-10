@@ -15,6 +15,9 @@ let estado = document.querySelector("#estado");
 let numeroCasa = document.querySelector("#n-casa");
 let trilhaDeAprendizagem = document.querySelector('[name="trilha-de-aprendizagem"]');
 let confirmacaoTermos = document.querySelector("#confirmacao-termos");
+const usuarioId = document.querySelector("#usuario-id");
+const usuarioSenha = document.querySelector("#usuario-senha");
+const usuarioSenhaConfirm =document.querySelector("#usuario-senha-confirm"); 
 
 let btnInscricao = document.querySelector("#inscricao");
 
@@ -184,6 +187,33 @@ function validarTrilhaDeAprendizagem() {
         recolherErro(trilhaDeAprendizagem);
     }
 }
+function validarUsuarioId() {
+    if (usuarioId.validity.valueMissing) {
+        exibirErro(usuarioId, "Campo obrigatório");
+    }
+    else {
+        recolherErro(usuarioId);
+    }
+}
+function validarUsuarioSenha() {
+    if (usuarioSenha.validity.valueMissing) {
+        exibirErro(usuarioSenha, "Campo obrigatório");
+    }
+    else {
+        recolherErro(usuarioSenha);
+    }
+}
+function validarConfirmacaoSenhas() {
+    if (usuarioSenha.value != usuarioSenhaConfirm.value) {
+        exibirErro(usuarioSenhaConfirm, "Senhas diferem")
+    }
+    else {
+        recolherErro(usuarioSenhaConfirm);
+    }
+}
+
+
+
 function validarConfirmacaoTermos() {
     if (!confirmacaoTermos.checked) {
         exibirErro(confirmacaoTermos, "É necessário aceitar os termos e política de privacidade para realizar a inscrição");
@@ -285,6 +315,9 @@ function validarFormulario(event) {
     validarCep();
     validarConfirmacaoTermos();
     validarTrilhaDeAprendizagem();
+    validarUsuarioId();
+    validarUsuarioSenha();
+    validarConfirmacaoSenhas();
     if (form.checkValidity()) {
         form.submit();
     }

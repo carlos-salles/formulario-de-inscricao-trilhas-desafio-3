@@ -151,6 +151,25 @@
                     </div>
                 </fieldset>
 
+                <fieldset class="formulario">
+                    <h2 class="titulo-secundario">Dados de login</h2>
+                    <div class="formulario__item">
+                        <label for="usuario-id">Nome de usuário</label><br>
+                        <input class="campo-padrao" type="text" id="usuario-id" name="usuario-id" placeholder="meu-nome-de-usuario" onblur="validarUsuarioId()" required>
+                        <span class="alerta alerta--escondido"></span>
+                    </div>
+                    <div class="formulario__item">
+                        <label for="usuario-senha">Senha</label><br>
+                        <input class="campo-padrao" type="password" id="usuario-senha" name="usuario-senha" onblur="validarUsuarioSenha();validarConfirmacaoSenhas()" required>
+                        <span class="alerta alerta--escondido"></span>
+                    </div>
+                    <div class="formulario__item">
+                        <label for="usuario-senha-confirm">Confirme a senha</label><br>
+                        <input class="campo-padrao" type="password" id="usuario-senha-confirm" onblur="validarConfirmacaoSenhas()" required>
+                        <span class="alerta alerta--escondido"></span>
+                    </div>
+                </fieldset>
+
                 <div class="btn-container">
                     <button class="btn-inferior btn-secundario" type="button">Cancelar</button>
                     <button class="btn-inferior btn-secundario" type="button" onclick="salvarRascunho()">Salvar rascunho</button>
