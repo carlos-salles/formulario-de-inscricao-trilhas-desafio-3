@@ -14,7 +14,7 @@
                 <h1 class="titulo-principal">Formulário de inscrição</h1>
                 <p class="subtitulo-principal">Preencha os dados abaixo para fazer sua inscrição no Programa Trilhas</p>
             </header>
-            <form id="formulario-inscricao" method="post" onsubmit="validarFormulario(event)">
+            <form id="formulario-inscricao" method="post" onsubmit="validarFormulario(event)" novalidate>
                 <fieldset class="formulario">
                     <h2 class="titulo-secundario">Informações do participante</h2>
                     <div class="formulario__item">
@@ -142,16 +142,6 @@
                 </fieldset>
 
                 <fieldset class="formulario">
-                    <div class="formulario__item formulario__check">
-                        <input class="campo-check" type="checkbox" id="confirmacao-termos" name="confirmacao-termos" value="termos-confirmados">
-                        <label class="cabecalho-campo-check" for="confirmacao-termos">
-                            Declaro que li e concordo com os <strong class="texto-destaque">Termos e Condições</strong> e com a <strong class="texto-destaque">Política de Privacidade</strong>.
-                        </label>
-                        <span class="alerta alerta--escondido"></span>
-                    </div>
-                </fieldset>
-
-                <fieldset class="formulario">
                     <h2 class="titulo-secundario">Dados de login</h2>
                     <div class="formulario__item">
                         <label for="usuario-id">Nome de usuário</label><br>
@@ -160,12 +150,22 @@
                     </div>
                     <div class="formulario__item">
                         <label for="usuario-senha">Senha</label><br>
-                        <input class="campo-padrao" type="password" id="usuario-senha" name="usuario-senha" onblur="validarUsuarioSenha();validarConfirmacaoSenhas()" required>
+                        <input class="campo-senha" type="password" id="usuario-senha" name="usuario-senha" onblur="validarUsuarioSenha();validarConfirmacaoSenhas()" required>
                         <span class="alerta alerta--escondido"></span>
                     </div>
                     <div class="formulario__item">
                         <label for="usuario-senha-confirm">Confirme a senha</label><br>
-                        <input class="campo-padrao" type="password" id="usuario-senha-confirm" onblur="validarConfirmacaoSenhas()" required>
+                        <input class="campo-senha" type="password" id="usuario-senha-confirm" onblur="validarConfirmacaoSenhas()" required>
+                        <span class="alerta alerta--escondido"></span>
+                    </div>
+                </fieldset>
+                
+                <fieldset class="formulario">
+                    <div class="formulario__item formulario__check">
+                        <input class="campo-check" type="checkbox" id="confirmacao-termos" name="confirmacao-termos" value="termos-confirmados">
+                        <label class="cabecalho-campo-check" for="confirmacao-termos">
+                            Declaro que li e concordo com os <strong class="texto-destaque">Termos e Condições</strong> e com a <strong class="texto-destaque">Política de Privacidade</strong>.
+                        </label>
                         <span class="alerta alerta--escondido"></span>
                     </div>
                 </fieldset>
