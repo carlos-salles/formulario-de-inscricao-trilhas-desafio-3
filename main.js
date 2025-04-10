@@ -241,6 +241,9 @@ function validarFormulario(event) {
     validarUsuarioSenha();
     validarConfirmacaoSenhas();
     if (form.checkValidity()) {
+        localStorage.setItem(formStorageItem, "");
+        localStorage.setItem("usuario-id", usuarioId.value);
         form.submit();
+
     }
 }
