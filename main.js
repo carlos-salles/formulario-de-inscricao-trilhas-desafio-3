@@ -110,6 +110,14 @@ function validarDataNascimento() {
         recolherErro(dataNascimento);
     }
 }
+function validarSexo() {
+    if (sexo.value == "") {
+        exibirErro(sexo, "Campo obrigatório");
+    }
+    else {
+        recolherErro(sexo);
+    }
+}
 function validarCpf() {
     if (cpf.validity.valueMissing) {
         exibirErro(cpf, "Campo obrigatório");

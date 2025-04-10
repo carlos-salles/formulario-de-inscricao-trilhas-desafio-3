@@ -37,11 +37,13 @@
 
                     <div class="formulario__item">
                         <label for="sexo">Sexo</label><br>
-                        <select class="campo-padrao campo-select" id="sexo" name="sexo">
+                        <select class="campo-padrao campo-select" id="sexo" name="sexo" onblur="validarSexo()">
+                            <option hidden selected value=""></option>
                             <option value="masculino">Masculino</option>
                             <option value="feminino">Feminino</option>
                             <option value="n-a">Não informar</option>
                         </select>
+                        <span class="alerta alerta--escondido"></span>
                     </div>
 
                     <div class="formulario__item">
