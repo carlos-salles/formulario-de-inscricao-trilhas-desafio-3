@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 02 - INOVA</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main>
+        <section class="elementos-formulario">
+            <header>
+                <a class="btn-voltar" href=""><img src="assets/svg/arrow-left-02.svg">Voltar</a>
+                <h1 class="titulo-principal">Login</h1>
+                <p class="subtitulo-principal">Insira o seu usuário e senha para acessar a plataforma</p>
+            </header>
+            <form id="formulario-login" method="post" onsubmit="validarFormulario(event)" novalidate>
+
+                <fieldset class="formulario">
+                    <h2 class="titulo-secundario">Dados de login</h2>
+                    <div class="formulario__item">
+                        <label for="usuario-id">Nome de usuário</label><br>
+                        <input class="campo-padrao" type="text" id="usuario-id" name="usuario-id" placeholder="meu-nome-de-usuario" onblur="validarUsuarioId()" required>
+                        <span class="alerta alerta--escondido"></span>
+                    </div>
+                    <div class="formulario__item">
+                        <label for="usuario-senha">Senha</label><br>
+                        <input class="campo-senha" type="password" id="usuario-senha" name="usuario-senha" onblur="validarUsuarioSenha()" required>
+                        <span class="alerta alerta--escondido"></span>
+                    </div>
+                </fieldset>
+
+                <div class="btn-container">
+                    <button class="btn-inferior btn-secundario" type="button">Cancelar</button>
+                    <button class="btn-inferior btn-primario" type="submit">Entrar</button>
+                </div>
+            </form>
+        </section>
+
+        <div class="imagens">
+            <img class="imagem-jovem" src="assets/imagens/imagem.png" alt="Ilustração de jovem estudando"><br>
+            <img class="imagem-logo" src="assets/imagens/logo.png" alt="Logo Trilhas Inova">
+        </div>
+    </main>
+    <script type="text/javascript" src="./form.js"></script>
+    <script type="text/javascript" src="./login.js"></script>
+</body>
+</html>
